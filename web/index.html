@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<link rel="stylesheet" type="text/css" href="/common/common.css">
+	<link rel="stylesheet" type="text/css" href="./top.css">
+	<script>
+	//common_set
+	const commonset_page_title = 'Toy-VideoMixer';
+	const commonset_header_title = 'toy video mixer';
+	const header_enable = true;
+	</script>
+	<script type="text/javascript" src="/eel.js"></script>
+	<script src="/common/common.js"></script>
+</head>
+<body>
+	<set-header></set-header>
+	<main>
+		<div class="background">
+			<p class="title">toy video mixer</p>
+			<hr class="hr-default">
+			<div class="form-area">
+				<div class="guid-link-area">
+					<p class="formguid">読み込みファイル</p>
+					<a id="inputFolderLink" class="btn-hidden"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+				</div>
+				<div class="in-out-form">
+					<button class="in-out-btn" id="inputfilesSelecter">ファイルを選択</button>
+					<div class="inputfileList" id="selectedInputfiles">
+					</div>
+					<p id="selectedInputfilescount">ファイル数:0</p>
+				</div>
+			</div>
+			<div class="form-area output-area">
+				<div class="guid-link-area">
+					<p class="formguid">書き出しファイル</p>
+					<a id="outputFolderLink" class="btn-hidden"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+				</div>
+				<div class="in-out-form out-form">
+					<button class="in-out-btn" id="outputfilesSelecter">ファイルを選択</button>
+					<textarea class="out-textarea" id="selectedOutputfiles" readonly></textarea>
+				</div>
+			</div>
+			<div class="form-area setting-area">
+				<p class="formguid">設定</p>
+				<div class="setting-form">
+					<div class="setting">
+						<label for="captionMargin">テロップ余白</label>
+						<input id="captionMargin" type="number" min="0" step="1" placeholder="50">
+					</div>
+					<div class="setting">
+						<label for="captionSize">テロップサイズ</label>
+						<input id="captionSize" type="number" min="0" step="1" placeholder="90">
+					</div>
+					<div class="setting">
+						<label for="captionColor">テロップ色</label>
+						<input id="captionColor" type="text" placeholder="#ffffffff">
+					</div>
+					<div class="setting">
+						<label for="captionBorderColor">テロップ縁取り色</label>
+						<input id="captionBorderColor" type="text" placeholder="#000000ff">
+					</div>
+					<div class="setting">
+						<label for="BorderWidthRatio">テロップ縁取り割合</label>
+						<input id="BorderWidthRatio" type="number" min="0" max="1" step="0.01" placeholder="0.05">
+					</div>
+					<div class="setting">
+						<label for="captionDisplayTime">テロップ表示時間</label>
+						<input id="captionDisplayTime" type="number" min="0" step="1" placeholder="5">
+					</div>
+					<div class="setting">
+						<label for="captionFont">テロップフォント</label>
+						<input id="captionFont" type="text" placeholder="Zen Maru Gothic" readonly>
+					</div>
+					<div class="setting">
+						<label for="backgroundColor">動画背景色</label>
+						<input id="backgroundColor" type="text" placeholder="#ffffffff">
+					</div>
+					<div class="setting">
+						<label for="width">幅</label>
+						<input id="width" type="number" min="0" step="1" placeholder="auto">
+					</div>
+					<div class="setting">
+						<label for="height">高さ</label>
+						<input id="height" type="number" min="0" step="1" placeholder="auto">
+					</div>
+					<div class="setting">
+						<label for="fps">フレームレート</label>
+						<input id="fps" type="number" min="0" step="1" placeholder="auto">
+					</div>
+					<div class="setting">
+						<label for="sampleRate">サンプルレート</label>
+						<input id="sampleRate" type="number" min="0" step="1" placeholder="auto">
+					</div>
+					<div class="setting set-select">
+						<label for="preset">プリセット</label>
+						<select id="preset">
+							<option value="ultrafast">ultrafast</option>
+							<option value="superfast">superfast</option>
+							<option value="veryfast">veryfast</option>
+							<option value="faster">faster</option>
+							<option value="fast">fast</option>
+							<option value="medium">medium</option>
+							<option value="slow" selected>slow</option>
+							<option value="slower">slower</option>
+							<option value="veryslow">veryslow</option>
+						</select>
+					</div>
+					<div class="setting set-select">
+						<label for="HWEncode">ハードウェアエンコード</label>
+						<select id="HWEncode">
+							<option value="true">true</option>
+							<option value="false" selected>false</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-area exec-area">
+				<button class="exec-term-btn" id="execBtn">Start</button>
+				<button class="exec-term-btn trem-btn hidden-btn" id="termBtn">Stop</button>
+			</div>
+
+			<div class="progress-info">
+				<p class="formguid-process" id="formguid_process"></p>
+				<div class="progress-area progress-hidden" id="progressArea">
+					<label for="progressBar">進行度:</label>
+					<progress id="progressBar" max="1" value="0"></progress>
+					<label for="progressBar" id="progressPercentage">0%</label>
+				</div>
+			</div>
+			<textarea id="process" readonly></textarea>
+		</div>
+	</main>
+	<set-footer></set-footer>
+	<script src="./top.js" type="module"></script>
+</body>
+</html>
