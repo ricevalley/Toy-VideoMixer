@@ -1,0 +1,1 @@
+assetsにffmpeg.exeとffprobe.exeを配置する
